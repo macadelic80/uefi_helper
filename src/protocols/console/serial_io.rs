@@ -1,6 +1,6 @@
 use core::{ffi::c_void, ptr::null_mut};
 
-use r_efi::{efi::{Event, Status, SystemTable}, protocols::serial_io::{Mode, Protocol, PROTOCOL_GUID}};
+use lib_efi::{efi::{Event, Status, SystemTable}, protocols::serial_io::{Mode, Protocol, PROTOCOL_GUID}};
 
 
 pub struct SerialIO {

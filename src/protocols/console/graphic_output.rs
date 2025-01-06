@@ -1,4 +1,4 @@
-use r_efi::{
+use lib_efi::{
     efi::{Status, SystemTable},
     protocols::graphics_output::{BltOperation, BltPixel, Mode, ModeInformation, Protocol, PROTOCOL_GUID},
 };

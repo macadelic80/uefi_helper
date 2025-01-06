@@ -1,5 +1,4 @@
-use r_efi::{efi::{Event, Status, SystemTable}, protocols::simple_pointer::{Mode, Protocol, State}};
-
+use lib_efi::{efi::{Event, Status, SystemTable}, protocols::simple_pointer::{Mode, Protocol, State, PROTOCOL_GUID}};
 
 pub struct Pointer {
     protocol: *mut Protocol,
@@ -7,7 +6,7 @@ pub struct Pointer {
 impl Pointer {
     pub fn new(st: *mut SystemTable) -> Result<Pointer, Status> {
         let mut protocol: *mut Protocol = core::ptr::null_mut();
-        let mut guid = r_efi::protocols::simple_pointer::PROTOCOL_GUID;
+        let mut guid = PROTOCOL_GUID;
         let boot_services = unsafe{&mut *st}.boot_services;
         let status = unsafe {
             ((*boot_services).locate_protocol)(

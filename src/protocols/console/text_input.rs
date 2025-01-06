@@ -1,6 +1,6 @@
 use core::ffi::c_void;
 
-use r_efi::{efi::{Event, Status, SystemTable}, protocols::simple_text_input::{InputKey, Protocol}};
+use lib_efi::{efi::{Event, Status, SystemTable}, protocols::simple_text_input::{InputKey, Protocol}};
 
 // The Simple Text Input protocol defines the minimum input required to support the ConsoleIn device.
 /// The Simple Text Input protocol defines the minimum input required to support the ConsoleIn device.

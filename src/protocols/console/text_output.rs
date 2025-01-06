@@ -1,4 +1,4 @@
-use r_efi::{
+use lib_efi::{
     efi::{self, Status},
     protocols::simple_text_output::Protocol,
 };

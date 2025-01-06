@@ -1,6 +1,6 @@
 use core::{ptr::null_mut};
 
-use r_efi::{
+use lib_efi::{
     efi::{Status, SystemTable},
     protocols::{device_path, file, simple_file_system::{Protocol, PROTOCOL_GUID}}
 };

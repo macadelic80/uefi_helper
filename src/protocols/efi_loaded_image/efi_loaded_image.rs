@@ -1,6 +1,6 @@
 use core::ffi::c_void;
 
-use r_efi::{
+use lib_efi::{
     efi::{Handle, MemoryType, Status, SystemTable},
     protocols::{device_path, loaded_image::{Protocol, PROTOCOL_GUID}}
 };

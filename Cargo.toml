@@ -14,8 +14,8 @@ rust-version = "1.83"
 
 [dependencies]
 # Required setup to build as part of rustc.
-# compiler_builtins = { version = '0.1.0', optional = true }
-# core = { version = '1.0.0', optional = true, package = 'rustc-std-workspace-core' }
+compiler_builtins = { version = '0.1.0', optional = true }
+core = { version = '1.0.0', optional = true, package = 'rustc-std-workspace-core' }
 lib_efi = { git = "https://github.com/macadelic80/lib_efi" }
 
 # [features]

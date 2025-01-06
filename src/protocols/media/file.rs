@@ -1,6 +1,6 @@
 use core::{alloc, ffi::c_void, ptr::null_mut};
 
-use r_efi::{
+use lib_efi::{
     efi::{Guid, Status, SystemTable},
     protocols::{
         device_path,
@@ -12,7 +12,22 @@ use r_efi::{
     },
 };
 
-use crate::protocols::logger::str_to_utf16;
+// use crate::protocols::logger::str_to_utf16;
+
+pub fn str_to_utf16(s: &str) -> [u16; 128] {
+    let mut buffer = [0u16; 128];
+    let mut i = 0;
+    for c in s.encode_utf16() {
+        if i >= 127 {
+            break;
+        }
+        buffer[i] = c;
+        i += 1;
+    }
+    buffer[i] = 0; // Terminaison nulle
+    buffer
+}
+
 
 #[repr(u64)]
 pub enum OpenMode {

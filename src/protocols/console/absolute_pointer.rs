@@ -1,4 +1,7 @@
-use r_efi::{efi::{Event, Status, SystemTable}, protocols::absolute_pointer::{Mode, Protocol, State}};
+use lib_efi::{
+    efi::{Event, Status, SystemTable},
+    protocols::absolute_pointer::{Mode, Protocol, State, PROTOCOL_GUID}
+};
 
 
 pub struct AbsolutePointer {
@@ -7,7 +10,7 @@ pub struct AbsolutePointer {
 impl AbsolutePointer {
     pub fn new(st: *mut SystemTable) -> Result<AbsolutePointer, Status> {
         let mut protocol: *mut Protocol = core::ptr::null_mut();
-        let mut guid = r_efi::protocols::absolute_pointer::PROTOCOL_GUID;
+        let mut guid = PROTOCOL_GUID;
         let boot_services = unsafe{&mut *st}.boot_services;
         let status = unsafe {
             ((*boot_services).locate_protocol)(

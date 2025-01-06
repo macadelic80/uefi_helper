@@ -1,6 +1,6 @@
 use core::ffi::c_void;
 
-use r_efi::{efi::{Status, SystemTable}, protocols::simple_text_input_ex::{KeyData, KeyNotifyFunction, Protocol}};
+use lib_efi::{efi::{Status, SystemTable}, protocols::simple_text_input_ex::{KeyData, KeyNotifyFunction, Protocol, PROTOCOL_GUID}};
 
 pub struct TextInputEx {
     protocol: *mut Protocol,
@@ -16,7 +16,7 @@ pub enum ToggleState {
 impl TextInputEx {
     pub fn new(st: *mut SystemTable) -> Result<TextInputEx,Status> {
         let mut protocol: *mut Protocol = core::ptr::null_mut();
-        let mut guid = r_efi::protocols::simple_text_input_ex::PROTOCOL_GUID;
+        let mut guid = PROTOCOL_GUID;
         let boot_services = unsafe{&mut *st}.boot_services;
         let status = unsafe {
             ((*boot_services).locate_protocol)(
